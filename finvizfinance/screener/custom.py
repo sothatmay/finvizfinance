@@ -205,7 +205,10 @@ class Custom(Overview):
                 if not ascend:
                     url = url.replace("o=", "o=-")
                 url += "&c=" + ",".join(columns)
-                soup = web_scrap(url)
+                soup = None
+                while soup is not None:
+                   soup = web_scrap(url)
+                   sleep(sleep_sec)
                 table = soup.find("table", class_="table-light")
                 rows = table.findAll("tr")
                 df = self._screener_helper(
