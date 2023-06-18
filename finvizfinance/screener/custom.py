@@ -206,7 +206,7 @@ class Custom(Overview):
                     url = url.replace("o=", "o=-")
                 url += "&c=" + ",".join(columns)
                 soup = None
-                while soup is not None:
+                while soup is None:
                    soup = web_scrap(url)
                    sleep(sleep_sec * 2)
                 table = soup.find("table", class_="table-light")
