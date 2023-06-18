@@ -208,7 +208,7 @@ class Custom(Overview):
                 soup = None
                 while soup is not None:
                    soup = web_scrap(url)
-                   sleep(sleep_sec)
+                   sleep(sleep_sec * 2)
                 table = soup.find("table", class_="table-light")
                 rows = table.findAll("tr")
                 df = self._screener_helper(
