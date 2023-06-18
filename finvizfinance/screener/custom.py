@@ -207,8 +207,11 @@ class Custom(Overview):
                 url += "&c=" + ",".join(columns)
                 soup = None
                 while soup is None:
-                   soup = web_scrap(url)
-                   sleep(sleep_sec * 2)
+                   try:
+                      soup = web_scrap(url)
+                   except Exception as e:
+                      print(e)
+                      sleep(sleep_sec * 2)
                 table = soup.find("table", class_="table-light")
                 rows = table.findAll("tr")
                 df = self._screener_helper(
